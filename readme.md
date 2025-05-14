@@ -42,6 +42,8 @@ Before running the script, ensure you have Python installed. You will also need 
 
 ## Setup and Installation
 
+This project uses `uv` for package management, which is a fast Python package installer and resolver, written in Rust.
+
 1.  **Clone the Repository (Optional):**
     If you have this project as a Git repository, clone it:
     ```bash
@@ -49,13 +51,48 @@ Before running the script, ensure you have Python installed. You will also need 
     cd <repository-directory>
     ```
 
-2.  **Install Dependencies:**
-    You can install the required Python libraries using pip:
+2.  **Install `uv`:**
+    If you don't have `uv` installed, you can install it using `pipx` (recommended) or `pip`:
+    *   Using `pipx`:
+        ```bash
+        pipx install uv
+        ```
+    *   Using `pip`:
+        ```bash
+        pip install uv
+        ```
+    Verify the installation:
     ```bash
-    pip install ultralytics opencv-python cvzone
+    uv --version
     ```
 
-3.  **YOLOv8 Model Weights:**
+3.  **Create and Activate a Virtual Environment:**
+    It is highly recommended to use a virtual environment. Navigate to the project root directory and run:
+    *   Create the virtual environment (e.g., named `.venv`):
+        ```bash
+        uv venv .venv
+        ```
+    *   Activate the virtual environment:
+        *   On macOS/Linux:
+            ```bash
+            source .venv/bin/activate
+            ```
+        *   On Windows (PowerShell):
+            ```powershell
+            .venv\Scripts\Activate.ps1
+            ```
+        *   On Windows (CMD):
+            ```batch
+            .venv\Scripts\activate.bat
+            ```
+
+4.  **Install Dependencies:**
+    With the virtual environment activated, install the required Python libraries from [`requirements.txt`](requirements.txt):
+    ```bash
+    uv pip install -r requirements.txt
+    ```
+
+5.  **YOLOv8 Model Weights:**
     The project expects the YOLOv8 Large model weights (`yolov8l.pt`) to be present in the `Yolo-Weights/` directory. This file is included in the provided project structure. If you need to download it manually, you can usually obtain it when `ultralytics` is first used or from the official Ultralytics YOLO repository.
 
 ## Usage
